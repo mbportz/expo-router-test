@@ -45,7 +45,7 @@ type InputProps = {
    validators?: Validator[];
    id?: string;
    label?: string;
-   isPassword: false;
+   isPassword?: boolean;
 };
 
 const Input = ({
@@ -57,7 +57,7 @@ const Input = ({
    const [state, dispatch] = useReducer(reducer, {
       ...initialState,
    });
-   const [showPassword, setShowPassword] = useState<boolean>(false);
+   const [showPassword, setShowPassword] = useState<boolean>(!!isPassword);
 
    return (
       <View style={styles.container}>
@@ -83,7 +83,10 @@ const Input = ({
                placeholder={label}
             />
             {isPassword && (
-               <Pressable onPress={() => setShowPassword((prev) => !prev)}>
+               <Pressable
+                  style={{ justifyContent: "flex-end" }}
+                  onPress={() => setShowPassword((prev) => !prev)}
+               >
                   <Text>show</Text>
                </Pressable>
             )}
@@ -99,13 +102,16 @@ const styles = StyleSheet.create({
       borderRadius: 7,
       borderWidth: 2,
       padding: 10,
-      width: 200,
+      width: 300,
       flexDirection: "row",
+      flex: 1,
    },
    input: {
-      textAlign: "center",
+      flex: 1,
+      textAlign: "left",
    },
    container: {
       gap: 10,
+      height: 70,
    },
 });

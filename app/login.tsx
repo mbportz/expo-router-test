@@ -9,7 +9,6 @@ export default function Index() {
 
    return (
       <View style={styles.container}>
-         <Text>This is the login Page</Text>
          <Input label="Username" validators={[VALIDATOR_REQUIRE()]} />
          <Input
             label="Password"
@@ -39,5 +38,5 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       borderRadius: 9,
    },
-   buttonText: { fontSize: 20, fontWeight: "bold", color: "blue" },
+   buttonText: { fontSize: 20, fontWeight: "bold", color: "blue"},
 });
