@@ -1,10 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import Input from "../ui/FormElements/Input";
+import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from "../util/validators";
 
 const Profile = () => {
    return (
       <View style={styles.container}>
-         <Text>Profile</Text>
+         <Input validators={[VALIDATOR_MINLENGTH(6), VALIDATOR_EMAIL()]} />
       </View>
    );
 };

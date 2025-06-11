@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AuthContext } from "./context/authContext";
+import Input from "./ui/FormElements/Input";
+import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "./util/validators";
 
 export default function Index() {
    const authState = useContext(AuthContext);
@@ -8,7 +10,12 @@ export default function Index() {
    return (
       <View style={styles.container}>
          <Text>This is the login Page</Text>
-
+         <Input label="Username" validators={[VALIDATOR_REQUIRE()]} />
+         <Input
+            label="Password"
+            validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(9)]}
+            isPassword
+         />
          <TouchableOpacity style={styles.button} onPress={authState.logIn}>
             <Text style={styles.buttonText}>Login</Text>
          </TouchableOpacity>
